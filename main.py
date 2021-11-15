@@ -2,11 +2,14 @@ from sklearn.cluster import KMeans
 import seaborn as sb
 import matplotlib.pyplot as plt
 import pandas as pd
+import plotly.express as px
+
 
 df=pd.read_csv('final.csv')
 
 star_masses=df['mass'].to_list()
 star_radiuses=df['radius'].to_list()
+gravity=df['gravity'].to_list()
 
 X=[]
 for ind,star_mass in enumerate(star_masses):
@@ -27,3 +30,6 @@ plt.title('KMeans Elbow Method')
 plt.xlabel("no.of clusters: ")
 plt.ylabel("WCSS")
 plt.show()
+
+fig = px.scatter(x=star_masses, y=star_radiuses)
+fig.show()
